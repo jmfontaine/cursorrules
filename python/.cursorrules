@@ -1,0 +1,182 @@
+As an AI assistant with specialized expertise in Python development, you must follow these general guidelines to provide
+helpful and accurate technical advice.
+
+# User Experience
+
+- Provide an excellent user experience in all interactions.
+- Give meaningful feedback to users, including warnings and progress indicators.
+- Provide contextual help and guidance at key points.
+- When errors or unexpected behavior occur, deliver clear, actionable feedback.
+
+# Python Coding Practices
+
+## Writing Pythonic Code
+
+The Zen of Python outlines the key principles guiding Python's design:
+
+- Beautiful is better than ugly.
+- Explicit is better than implicit.
+- Simple is better than complex.
+- Complex is better than complicated.
+- Flat is better than nested.
+- Sparse is better than dense.
+- Readability counts.
+- Special cases aren't special enough to break the rules.
+- Although practicality beats purity.
+- Errors should never pass silently.
+- Unless explicitly silenced.
+- In the face of ambiguity, refuse the temptation to guess.
+- There should be one-- and preferably only one --obvious way to do it.
+- Although that way may not be obvious at first unless you're Dutch.
+- Now is better than never.
+- Although never is often better than _right_ now.
+- If the implementation is hard to explain, it's a bad idea.
+- If the implementation is easy to explain, it may be a good idea.
+- Namespaces are one honking great idea -- let's do more of those!
+
+Let these principles guide your coding practices.
+
+## Target Python Version
+
+- Code should target the Python version specified in the `.python-version` file or newer, when present.
+- Using features exclusive to newer Python versions is acceptable.
+
+## Programming Paradigms
+
+- Favor functional and declarative programming approaches when appropriate.
+- Use classes and object-oriented programming only when they provide clear benefits.
+- Choose between synchronous and asynchronous programming (`async`/`await`) based on the specific needs of your task.
+
+## Code Style & Structure
+
+- Write clear, concise code examples with correct Python syntax.
+- Keep code simple and maintainable through iteration and modularization rather than complex solutions.
+- Choose descriptive variable names with auxiliary verbs (e.g., `is_active`, `has_permission`).
+- Name directories and files in lowercase with underscores (e.g., `utils/helpers.py`).
+- Include type hints in all function signatures.
+
+## Docstrings
+
+- Write comprehensive docstrings for all functions and modules, and keep them up to date as code changes.
+- Follow Google-style docstring conventions for clarity and consistency.
+
+## Validation & Modeling
+
+- Use Pydantic v2 models instead of raw dictionaries for input validation.
+
+## Global Variables
+
+- Avoid global variables to minimize side effects and improve code predictability.
+
+## Error Handling & Logging
+
+- Use `try-except` blocks for graceful exception handling.
+- Handle errors and edge cases using guard clauses (early returns) at the start of functions.
+- Keep the main function logic ("happy path") at the end to minimize nesting.
+- Prefer the `if-return` pattern over unnecessary `else` statements.
+- Create custom error types or error factories to ensure consistent exception handling.
+- Log significant events to a file using structured formats like JSON.
+
+## Security & Secrets Management
+
+- Handle all sensitive information and secrets with strict security protocols.
+- Store secrets exclusively in environment variables or dedicated secret management systems.
+- Prevent any exposure of secrets or private keys in application logs.
+- Keep all sensitive data out of source control repositories.
+- Implement thorough input sanitization to protect against injection attacks.
+
+## Code Format & Style Checks
+
+- Use [Ruff](https://docs.astral.sh/ruff/) for code linting and formatting.
+- Use [pre-commit](https://pre-commit.com/) hooks to automatically enforce style, formatting, and linting rules before
+each commit.
+- Use [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking.
+- When modifying files, adhere to established code style guidelines and structure changes to be review-friendly with
+minimal diff impact.
+
+## Dependency Management
+
+- Use [uv](https://docs.astral.sh/uv/) for dependency and virtual environment management.
+
+## Python Dependencies
+
+Here are the recommended libraries and tools for specific tasks:
+
+- [Click](https://click.palletsprojects.com/en/stable/) for CLI applications.
+- [HTTPX](https://www.python-httpx.org/) for HTTP requests.
+- [Pydantic v2](https://docs.pydantic.dev/latest/) for data validation.
+- [Rich](https://rich.readthedocs.io/en/stable/) for rich text output and formatting in the terminal.
+- [SQLAlchemy Core](https://docs.sqlalchemy.org/en/20/core/index.html) for database operations (**avoid the ORM**).
+- [structlog](https://www.structlog.org/) for structured logging.
+- [tqdm](https://tqdm.github.io/) for progress bars.
+
+# Testing
+
+- Write comprehensive tests with type hints and docstrings.
+- Create tests for every function and module.
+- Aim for complete test coverage while ensuring tests are meaningful and valuable.
+- Use [pytest](https://docs.pytest.org/en/latest/) and its [plugins](https://docs.pytest.org/en/latest/plugins.html)
+exclusively—avoid unittest.
+- Track test coverage using [pytest-cov](https://github.com/pytest-dev/pytest-cov).
+- Automate testing workflows with [nox](https://nox.thea.codes/).
+- Store all test files in the `./tests` directory.
+- Follow this file structure:
+
+```shell
+.
+├── src/
+│   └── mypkg/
+│       ├── __init__.py
+│       └── app.py
+│       └── view.py
+├── tests/
+│   ├── app_test.py
+│   └── view_test.py
+…
+```
+
+## Performance & Concurrency
+
+- Optimize for a balance between execution speed, CPU usage, and memory consumption.
+- Write efficient code that avoids system overload and unnecessary complexity in memory management.
+- Consider multithreading or multiprocessing only when they offer clear performance benefits.
+- Default to single-threaded solutions when concurrent approaches would add unwarranted complexity.
+
+# Documentation
+
+- Use [mkdocs](https://www.mkdocs.org/) to generate project documentation.
+- Style documentation with the [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) theme.
+- Place all documentation files in the `./docs` directory.
+- When editing Markdown files, maintain the existing structure and only modify content unless specified otherwise.
+- Follow established style guidelines to ensure documentation consistency.
+
+# CI/CD
+
+- Set up continuous integration and delivery pipelines using [GitHub Actions](https://github.com/features/actions).
+
+# Local Development
+
+- Use [uv](https://docs.astral.sh/uv/) for managing virtual environments.
+- Use [just](https://just.systems/) for task automation.
+
+# Project Organization
+
+Here is the project structure:
+
+```shell
+.
+├── .vscode                 # VS Code settings
+├── docs                    # Documentation
+├── src
+│   └── mypkg               # Source code
+├── tests                   # Tests
+├── .cursorrules            # Cursor AI rules
+├── .gitignore              # Git ignore file
+├── .pre-commit-config.yaml # pre-commit configuration
+├── .python-version         # Python version
+├── justfile                # Commands
+├── mkdocs.yml              # MkDocs configuration
+├── pyproject.toml          # Python project configuration
+├── README.md               # README file
+└──  uv.lock                # uv lock file
+```

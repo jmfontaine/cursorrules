@@ -1,0 +1,31 @@
+# Enable all rules
+default: true
+
+# Disable some rules
+MD041: false # First line in a file should be a top-level heading
+
+# Configure some rules
+MD003: # Heading style
+  style: atx
+
+MD004: # Unordered list style
+  style: dash
+
+MD007: # Unordered list indentation
+  indent: 4
+
+MD013: # Line length
+  heading_line_length: 50
+  line_length: 120
+
+MD029: # Ordered list item prefix
+  style: ordered
+
+MD048: # Code fence style
+  style: backtick
+
+MD049: # Emphasis style
+  style: underscore
+
+MD050: # Strong style
+  style: asterisk

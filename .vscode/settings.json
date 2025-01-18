@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "codespell",
+        "cursorrules",
+        "Docstrings",
+        "HTTPX",
+        "justfile",
+        "mkdocs",
+        "mypkg",
+        "mypy",
+        "Pydantic",
+        "pyproject",
+        "pytest",
+        "Pythonic",
+        "structlog",
+        "tqdm"
+    ]
+}
